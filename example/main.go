@@ -15,5 +15,12 @@ func main() {
 		NewUser("John", "Travis"),
 	}
 
+	// John Doe, John Travis
 	log.Println(goslices.Filter(users, NewFirstnameSpecification("John")))
+
+	// Marcos Christian
+	log.Println(goslices.Find(users, NewFirstnameSpecification("Marcos")))
+
+	// Empty user
+	log.Println(goslices.Find(users, NewFirstnameSpecification("Mike")))
 }
