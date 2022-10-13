@@ -15,6 +15,12 @@ func main() {
 		NewUser("John", "Travis"),
 	}
 
+	jobs := []string{
+		"developer",
+		"astronaut",
+		"singer",
+	}
+
 	// John Doe, John Travis
 	log.Println(goslices.Filter(users, NewFirstnameSpecification("John")))
 
@@ -23,4 +29,8 @@ func main() {
 
 	// Empty user
 	log.Println(goslices.Find(users, NewFirstnameSpecification("Mike")))
+
+	for i := 0; i < 5; i++ {
+		log.Println(goslices.Rand(jobs))
+	}
 }
