@@ -33,4 +33,8 @@ func main() {
 	for i := 0; i < 5; i++ {
 		log.Println(goslices.Rand(jobs))
 	}
+
+	log.Println(goslices.Map(users, func(user User) Employee {
+		return NewEmployee(user.firstname, user.lastname, goslices.Rand(jobs))
+	}))
 }
