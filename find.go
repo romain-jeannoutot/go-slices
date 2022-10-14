@@ -10,3 +10,13 @@ func Find[T any](items []T, specification Specification) T {
 	var zero T
 	return zero
 }
+
+func FindIndex[T any](items []T, specification Specification) int {
+	for idx, item := range items {
+		if specification.IsSatisfied(item) {
+			return idx
+		}
+	}
+
+	return -1
+}

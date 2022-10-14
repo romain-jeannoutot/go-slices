@@ -24,16 +24,15 @@ func main() {
 	// John Doe, John Travis
 	log.Println(goslices.Filter(users, NewFirstnameSpecification("John")))
 
-	// Marcos Christian
-	log.Println(goslices.Find(users, NewFirstnameSpecification("Marcos")))
+	// Marcos Christian, 3
+	spec := NewFirstnameSpecification("Marcos")
+	log.Println(goslices.Find(users, spec), goslices.FindIndex(users, spec))
 
-	// Empty user
-	log.Println(goslices.Find(users, NewFirstnameSpecification("Mike")))
+	// Empty user, -1
+	spec = NewFirstnameSpecification("Mike")
+	log.Println(goslices.Find(users, spec), goslices.FindIndex(users, spec))
 
-	for i := 0; i < 5; i++ {
-		log.Println(goslices.Rand(jobs))
-	}
-
+	// All users with random job
 	log.Println(goslices.Map(users, func(user User) Employee {
 		return NewEmployee(user.firstname, user.lastname, goslices.Rand(jobs))
 	}))
