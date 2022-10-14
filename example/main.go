@@ -42,4 +42,10 @@ func main() {
 
 	// false
 	log.Println(goslices.Includes(jobs, "postman"))
+
+	// true
+	log.Println(goslices.Every(users, NewHasFirstnameSpecification()))
+
+	// false
+	log.Println(goslices.Every(users, NewFirstnameSpecification("John")))
 }
