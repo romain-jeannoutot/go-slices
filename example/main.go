@@ -36,4 +36,10 @@ func main() {
 	log.Println(goslices.Map(users, func(user User) Employee {
 		return NewEmployee(user.firstname, user.lastname, goslices.Rand(jobs))
 	}))
+
+	// true
+	log.Println(goslices.Includes(jobs, "developer"))
+
+	// false
+	log.Println(goslices.Includes(jobs, "postman"))
 }
