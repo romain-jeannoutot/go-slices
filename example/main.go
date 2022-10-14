@@ -48,4 +48,10 @@ func main() {
 
 	// false
 	log.Println(goslices.Every(users, NewFirstnameSpecification("John")))
+
+	// true
+	log.Println(goslices.Some(users, NewFirstnameSpecification("Marcos")))
+
+	// false
+	log.Println(goslices.Some(users, NewFirstnameSpecification("Mike")))
 }
