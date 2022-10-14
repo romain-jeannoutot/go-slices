@@ -33,7 +33,7 @@ func main() {
 	log.Println(goslices.Find(users, spec), goslices.FindIndex(users, spec))
 
 	// All users with random job
-	log.Println(goslices.Map(users, func(user User) Employee {
+	log.Println(goslices.Map(users, func(user User, _ int, _ []User) Employee {
 		return NewEmployee(user.firstname, user.lastname, goslices.Rand(jobs))
 	}))
 
