@@ -2,7 +2,18 @@
 
 Functions for slices using Go generics and (sometimes) specification pattern.
 
-[TOC]
+- [Go slices](#go-slices)
+  - [Documentation](#documentation)
+  - [Install](#install)
+  - [Usage](#usage)
+    - [func Every](#func-every)
+    - [func Filter](#func-filter)
+    - [func Find](#func-find)
+    - [func FindIndex](#func-findindex)
+    - [func Includes](#func-includes)
+    - [func Map](#func-map)
+    - [func Rand](#func-rand)
+    - [func Some](#func-some)
 
 ## Documentation
 
@@ -24,7 +35,7 @@ Examples are based on [example](https://github.com/romain-jeannoutot/go-slices/t
 func Every[T any](items []T, specification Specification) bool
 ```
 
-The `Every()` func return `true` if all items satisfy specification. Else, return `false`.
+The `Every()` func returns `true` if all items satisfy specification. Else, return `false`.
 
 *Example :*
 
@@ -39,7 +50,7 @@ goslices.Every(users, NewFirstnameSpecification("John")) // false
 func Filter[T any](items []T, specification Specification) []T
 ```
 
-The `Filter()` func return a new slice with items satisfying specification.
+The `Filter()` func returns a new slice with items satisfying specification.
 
 *Example :*
 
@@ -54,11 +65,86 @@ goslices.Filter(users, NewFirstnameSpecification("Mike")) // []
 func Find[T any](items []T, specification Specification) T
 ```
 
-The `Find()` func return the first item in slice satisfying specification. Else, return empty value.
+The `Find()` func returns the first item in slice satisfying specification. Else, return empty value.
 
 *Example :*
 
 ```go
 goslices.Find(users, NewFirstnameSpecification("John")) // John Doe
 goslices.Find(users, NewFirstnameSpecification("Mike")) // Empty User
+```
+
+### func FindIndex
+
+```go
+func FindIndex[T any](items []T, specification Specification) int
+```
+
+The `FindIndex()` func returns index of the first item in slice satisfying specification. Else, return -1.
+
+*Example :*
+
+```go
+goslices.FindIndex(users, NewFirstnameSpecification("John")) // 0
+goslices.FindIndex(users, NewFirstnameSpecification("Mike")) // -1
+```
+
+### func Includes
+
+```go
+func Includes[T comparable](items []T, searchElement T) bool
+```
+
+The `Includes()` func returns `true` if at least one item in slice is equal to `searchElement`. Else, return `false`.
+
+*Example :*
+
+```go
+goslices.Includes(jobs, "developer") // true
+goslices.Includes(jobs, "postman") // false
+```
+
+### func Map
+
+```go
+func Map[T any, S any](items []T, callback func(item T, idx int, items []T) S) []S
+```
+
+The `Map()` func creates a new slice populated with elements returned by function called on each slice element.
+
+*Example :*
+
+```go
+goslices.Map(users, func(user User, _ int, _ []User) Employee {
+  return NewEmployee(user.firstname, user.lastname, goslices.Rand(jobs))
+}) // []Employee
+```
+
+### func Rand
+
+```go
+func Rand[T any](items []T) T
+```
+
+The `Rand()` func returns a random element from slice. Empty value if slice is empty.
+
+*Example :*
+
+```go
+goslices.Rand(jobs) // string
+```
+
+### func Some
+
+```go
+func Some[T any](items []T, specification Specification) bool
+```
+
+The `Some()` func returns `true` if at least one item satisfy specification. Else, return `false`.
+
+*Example :*
+
+```go
+goslices.Some(users, NewFirstnameSpecification("John")) // true
+goslices.Some(users, NewFirstnameSpecification("Mike")) // false
 ```
