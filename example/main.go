@@ -54,4 +54,10 @@ func main() {
 
 	// false
 	log.Println(goslices.Some(users, NewFirstnameSpecification("Mike")))
+
+	// map[Aliyah:1 Arnas:1 John:2 Marcos:1]
+	log.Println(goslices.Reduce(users, func(acc map[string]int, user User, _ int, _ []User) map[string]int {
+		acc[user.firstname]++
+		return acc
+	}, map[string]int{}))
 }
