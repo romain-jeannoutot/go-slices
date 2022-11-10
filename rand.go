@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// Rand returns a random element from slice. Empty value if slice is empty.
 func Rand[T any](items []T) T {
 	if len(items) <= 0 {
 		var zero T
