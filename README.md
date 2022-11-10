@@ -21,7 +21,7 @@ Functions for slices using Go generics and (sometimes) specification pattern.
 
 ## Documentation
 
-Full documentation coming soon ...
+See full documentation [here](https://pkg.go.dev/github.com/romain-jeannoutot/go-slices).
 
 ## Install
 
