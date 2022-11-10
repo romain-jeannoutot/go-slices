@@ -13,6 +13,7 @@ Functions for slices using Go generics and (sometimes) specification pattern.
     - [func Includes](#func-includes)
     - [func Map](#func-map)
     - [func Rand](#func-rand)
+    - [func Reduce](#func-reduce)
     - [func Some](#func-some)
 
 ## Documentation
@@ -132,6 +133,23 @@ The `Rand()` func returns a random element from slice. Empty value if slice is e
 
 ```go
 goslices.Rand(jobs) // string
+```
+
+### func Reduce
+
+```go
+func Reduce[T any, S any](items []T, callback func(acc S, item T, idx int, items []T) S, initialValue S) S
+```
+
+The `Reduce()` func executes a reducer function on each slice element, passing in the return value from the calculation on the preceding element.
+
+*Example :*
+
+```go
+goslices.Reduce(users, func(acc map[string]int, user User, _ int, _ []User) map[string]int {
+  acc[user.firstname]++
+  return acc
+}, map[string]int{}) // map[Aliyah:1 Arnas:1 John:2 Marcos:1]
 ```
 
 ### func Some
