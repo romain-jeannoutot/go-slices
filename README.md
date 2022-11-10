@@ -1,5 +1,7 @@
 # Go slices
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/romain-jeannoutot/go-slices.svg)](https://pkg.go.dev/github.com/romain-jeannoutot/go-slices)
+
 Functions for slices using Go generics and (sometimes) specification pattern.
 
 - [Go slices](#go-slices)
