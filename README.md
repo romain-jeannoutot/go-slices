@@ -15,6 +15,7 @@ Functions for slices using Go generics and (sometimes) specification pattern.
     - [func Rand](#func-rand)
     - [func Reduce](#func-reduce)
     - [func Some](#func-some)
+  - [Licence](#licence)
 
 ## Documentation
 
@@ -166,3 +167,7 @@ The `Some()` func returns `true` if at least one item satisfy specification. Els
 goslices.Some(users, NewFirstnameSpecification("John")) // true
 goslices.Some(users, NewFirstnameSpecification("Mike")) // false
 ```
+
+## Licence
+
+This package is licensed under MIT license. See LICENSE for details.
